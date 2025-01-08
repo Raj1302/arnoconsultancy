@@ -11,6 +11,13 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
+        accent: "var(--accent)",
+      },
+      fontFamily: {
+        'times': ['Times New Roman', 'serif'],
+        'jakarta': ['var(--font-jakarta)', 'sans-serif'],
       },
     },
   },

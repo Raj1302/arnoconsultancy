@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
-import ScrollProvider from './components/ScrollProvider';
-import ScrollProgress from './components/ScrollProgress';
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -23,11 +21,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${jakarta.variable} antialiased font-jakarta`}>
-        <ScrollProvider>
-          <ScrollProgress />
-          <Navbar />
-          {children}
-        </ScrollProvider>
+        <Navbar />
+        {children}
       </body>
     </html>
   );

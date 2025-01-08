@@ -1,6 +1,5 @@
 import Image from "next/image";
 import LogoSlider from './components/LogoSlider';
-import ScrollLink from './components/ScrollLink';
 import { images } from './config/images';
 
 export default function Home() {
@@ -52,7 +51,7 @@ export default function Home() {
 
           <div className="mt-10 sm:mt-16 flex flex-col sm:flex-row gap-3 sm:gap-6 
                          justify-center items-center px-4 sm:px-0">
-            <ScrollLink
+            <a
               href="#contact"
               className="bg-violet-600 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-full 
                        font-medium transition-all duration-300 text-base sm:text-lg
@@ -60,7 +59,7 @@ export default function Home() {
                        active:scale-95 w-full sm:w-auto"
             >
               Start Your Journey
-            </ScrollLink>
+            </a>
             <a
               href="#services"
               className="px-8 sm:px-10 py-4 sm:py-5 rounded-full border border-gray-200

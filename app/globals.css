@@ -5,9 +5,11 @@
 :root {
   --background: theme(colors.white);
   --foreground: theme(colors.gray.900);
-  --primary: theme(colors.violet.600);
-  --secondary: theme(colors.purple.500);
-  --accent: theme(colors.violet.400);
+  --primary: #5C45FD;
+  --secondary: #161616;
+  --accent: #969799;
+  --light-primary: #A89BFF;
+  --off-white: #F5F5F5;
 }
 
 body {
@@ -19,12 +21,12 @@ body {
 @layer components {
   .service-card {
     @apply p-6 rounded-2xl border border-gray-200 
-           hover:border-violet-200
+           hover:border-[#A89BFF]
            transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
   }
   
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-purple-600;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#5C45FD] to-[#A89BFF];
   }
 
   .logo-text {

@@ -52,36 +52,32 @@ const LogoSlider = () => {
   const repeatedLogos = [...logos, ...logos, ...logos];
 
   return (
-    <div className="w-full bg-gray-50/50 py-8 sm:py-12">
-      <div className="max-w-6xl mx-auto px-4">
-        <p className="text-center text-gray-500 mb-6 sm:mb-8 text-sm uppercase tracking-wider">
-          Trusted by leading companies
-        </p>
-        
-        <div className="relative">
-          <div 
-            ref={sliderRef}
-            className="flex gap-8 sm:gap-16 items-center overflow-hidden whitespace-nowrap scroll-smooth"
-            style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}
-          >
-            <div className="flex gap-8 sm:gap-16 items-center">
-              {repeatedLogos.map((logo, index) => (
-                <div 
-                  key={index}
-                  className="flex-shrink-0 w-24 sm:w-32 h-12 sm:h-16 relative grayscale hover:grayscale-0 
-                           transition-all duration-300 opacity-60 hover:opacity-100"
-                >
-                  <Image
-                    src={logo.url}
-                    alt={logo.alt}
-                    width={logo.width}
-                    height={logo.height}
-                    className="object-contain"
-                  />
-                </div>
-              ))}
+    <div className="relative">
+      <div 
+        ref={sliderRef}
+        className="flex gap-4 xs:gap-6 sm:gap-8 md:gap-16 items-center overflow-hidden whitespace-nowrap scroll-smooth"
+        style={{ 
+          maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' 
+        }}
+      >
+        <div className="flex gap-4 xs:gap-6 sm:gap-8 md:gap-16 items-center">
+          {repeatedLogos.map((logo, index) => (
+            <div 
+              key={index}
+              className="flex-shrink-0 w-16 xs:w-20 sm:w-24 md:w-32 h-8 xs:h-10 sm:h-12 md:h-16 relative 
+                       grayscale hover:grayscale-0 transition-all duration-300 
+                       opacity-60 hover:opacity-100"
+            >
+              <Image
+                src={logo.url}
+                alt={logo.alt}
+                width={logo.width}
+                height={logo.height}
+                className="object-contain"
+              />
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

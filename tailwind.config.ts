@@ -11,13 +11,20 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        primary: "var(--primary)",
-        secondary: "var(--secondary)",
-        accent: "var(--accent)",
+        primary: {
+          DEFAULT: "#5C45FD",
+          light: "#A89BFF",
+        },
+        secondary: "#161616",
+        accent: "#969799",
+        offwhite: "#F5F5F5",
       },
       fontFamily: {
         'times': ['Times New Roman', 'serif'],
         'jakarta': ['var(--font-jakarta)', 'sans-serif'],
+      },
+      screens: {
+        'xs': '475px',
       },
     },
   },

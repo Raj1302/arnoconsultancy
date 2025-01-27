@@ -6,9 +6,6 @@ import TypeWriter from "./TypeWriter";
 import Eyes from "./Eyes";
 import Carousel from "./Carousel";
 import LogoSlider from "./LogoSlider";
-import ParallaxSection from "./ParallaxSection";
-import ReviewSection from "./ReviewSection";
-import ProcessSection from "./ProcessSection";
 import BlogsSection from "./BlogsSection";
 
 const fadeIn = {
@@ -99,27 +96,28 @@ export default function HomeContent() {
   return (
     <main className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center pt-40 sm:pt-48 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+      <section className="flex flex-col items-center justify-center pt-32 md:pt-32 lg:pt-40 pb-12 md:pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8">
           <motion.div
             initial="initial"
             animate="animate"
-            className="space-y-2"
+            className="space-y-2 md:space-y-4"
           >
             <motion.h1 
               {...fadeIn}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold font-[family-name:var(--font-ubuntu)] tracking-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-[family-name:var(--font-ubuntu)] tracking-tight leading-tight"
             >
               Transform Your Digital 
-              <br />
-              Presence<Eyes /> With
+              <br className="hidden sm:block" />
+              Presence
+              <span className="hidden sm:inline"><Eyes /></span> With
               <TypeWriter />
             </motion.h1>
             
             <motion.p 
               {...fadeIn}
               transition={{ delay: 0.2 }}
-              className="text-lg sm:text-xl text-foreground/70 max-w-2xl mx-auto mt-4"
+              className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto mt-2 md:mt-4 px-4 sm:px-0"
             >
               Elevate your brand with cutting-edge AI solutions, stunning web experiences, 
               and strategic digital marketing that sets you apart.
@@ -129,12 +127,12 @@ export default function HomeContent() {
           <motion.div 
             {...fadeIn}
             transition={{ delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center px-4 sm:px-0"
           >
-            <button className="px-8 py-3 rounded-full bg-foreground text-background font-medium hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
+            <button className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full bg-foreground text-background font-medium hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 text-sm sm:text-base">
               Explore Services
             </button>
-            <button className="px-8 py-3 rounded-full border border-foreground/10 hover:bg-primary/10 font-medium transition-all duration-300 transform hover:-translate-y-0.5">
+            <button className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full border border-foreground/10 hover:bg-primary/10 font-medium transition-all duration-300 transform hover:-translate-y-0.5 text-sm sm:text-base">
               View Portfolio
             </button>
           </motion.div>
@@ -145,26 +143,21 @@ export default function HomeContent() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="w-full mt-32 mb-12"
+          className="w-full mt-16 sm:mt-24 md:mt-32 mb-8 sm:mb-12"
         >
           <Carousel items={serviceItems} />
         </motion.div>
       </section>
 
       {/* Logo Slider Section */}
-      <LogoSlider />
-
-      {/* Parallax Section */}
-      <ParallaxSection />
-
-      {/* Process Section */}
-      <ProcessSection />
-
-      {/* Review Section */}
-      <ReviewSection />
+      <div className="px-4 sm:px-0">
+        <LogoSlider />
+      </div>
 
       {/* Blogs Section */}
-      <BlogsSection />
+      <div className="px-4 sm:px-0">
+        <BlogsSection />
+      </div>
     </main>
   );
 } 

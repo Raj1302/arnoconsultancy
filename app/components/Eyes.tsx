@@ -27,7 +27,7 @@ export default function Eyes() {
         const pupilY = Math.sin(angle) * radius;
 
         // Apply transform to pupil
-        pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+        pupil.style.transform = `translate(calc(-50% + ${pupilX}px), calc(-50% + ${pupilY}px))`;
       });
     };
 

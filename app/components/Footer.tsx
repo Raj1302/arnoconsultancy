@@ -55,18 +55,18 @@ const socialLinks = [
 export default function Footer() {
   return (
     <footer className="bg-background border-t border-primary/10">
-      <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-          <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-2 mb-6">
-              <div className="w-8 h-8 bg-primary rounded-lg" />
-              <span className="text-xl font-bold">Arno Consultancy</span>
+      <div className="max-w-7xl mx-auto py-12 md:py-16 px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+          <div className="col-span-2">
+            <div className="flex items-center space-x-2 mb-4 md:mb-6">
+              <div className="w-7 h-7 md:w-8 md:h-8 bg-primary rounded-lg" />
+              <span className="text-lg md:text-xl font-bold">Arno Consultancy</span>
             </div>
-            <p className="text-foreground/70 max-w-md mb-8">
+            <p className="text-sm md:text-base text-foreground/70 max-w-md mb-6 md:mb-8">
               A full-service digital marketing agency helping brands thrive in the digital age. 
               We combine creativity, technology, and strategy to deliver exceptional results.
             </p>
-            <div className="flex space-x-5">
+            <div className="flex space-x-4 md:space-x-5">
               {socialLinks.map((item) => (
                 <a
                   key={item.name}
@@ -74,40 +74,54 @@ export default function Footer() {
                   className="text-foreground/60 hover:text-primary transition-colors"
                 >
                   <span className="sr-only">{item.name}</span>
-                  {item.icon}
+                  <div className="w-5 h-5 md:w-6 md:h-6">
+                    {item.icon}
+                  </div>
                 </a>
               ))}
             </div>
           </div>
-          <div>
-            <h3 className="font-semibold mb-6">Services</h3>
-            <ul className="space-y-4">
+          <div className="col-span-1">
+            <h3 className="text-sm md:text-base font-semibold mb-4 md:mb-6">Services</h3>
+            <ul className="space-y-2 md:space-y-4">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-foreground/70 hover:text-primary transition-colors">
+                  <Link 
+                    href={link.href} 
+                    className="text-sm md:text-base text-foreground/70 hover:text-primary transition-colors"
+                  >
                     {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-          <div>
-            <h3 className="font-semibold mb-6">Company</h3>
-            <ul className="space-y-4">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-foreground/70 hover:text-primary transition-colors">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8">
-              <h3 className="font-semibold mb-6">Legal</h3>
-              <ul className="space-y-4">
+          <div className="col-span-1">
+            <div className="mb-8">
+              <h3 className="text-sm md:text-base font-semibold mb-4 md:mb-6">Company</h3>
+              <ul className="space-y-2 md:space-y-4">
+                {footerLinks.company.map((link) => (
+                  <li key={link.name}>
+                    <Link 
+                      href={link.href} 
+                      className="text-sm md:text-base text-foreground/70 hover:text-primary transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-sm md:text-base font-semibold mb-4 md:mb-6">Legal</h3>
+              <ul className="space-y-2 md:space-y-4">
                 {footerLinks.legal.map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href} className="text-foreground/70 hover:text-primary transition-colors">
+                    <Link 
+                      href={link.href} 
+                      className="text-sm md:text-base text-foreground/70 hover:text-primary transition-colors"
+                    >
                       {link.name}
                     </Link>
                   </li>
@@ -117,7 +131,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="pt-8 mt-8 border-t border-primary/10">
-          <p className="text-center text-foreground/60 text-sm">
+          <p className="text-center text-xs md:text-sm text-foreground/60">
             © {new Date().getFullYear()} Arno Consultancy. All rights reserved.
           </p>
         </div>

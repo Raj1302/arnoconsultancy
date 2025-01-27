@@ -30,8 +30,31 @@ export default function Carousel({ items }: CarouselProps) {
   }, [items.length]);
 
   const getSlideStyles = (index: number) => {
+    // Mobile styles (single card view)
+    if (typeof window !== 'undefined' && window.innerWidth < 640) {
+      return index === currentIndex 
+        ? {
+            x: '-50%',
+            y: '0%',
+            scale: 1,
+            opacity: 1,
+            rotateY: 0,
+            rotateZ: 0,
+            zIndex: 2,
+          }
+        : {
+            x: '-50%',
+            y: '0%',
+            scale: 0.9,
+            opacity: 0,
+            rotateY: 0,
+            rotateZ: 0,
+            zIndex: -1,
+          };
+    }
+
+    // Desktop styles (3 cards view)
     const positions = {
-      // Previous/Left card
       [((currentIndex - 1) + items.length) % items.length]: {
         x: '-100%',
         y: '5%',
@@ -41,7 +64,6 @@ export default function Carousel({ items }: CarouselProps) {
         rotateZ: -8,
         zIndex: 0,
       },
-      // Current/Center card
       [currentIndex]: {
         x: '-50%',
         y: '-5%',
@@ -51,7 +73,6 @@ export default function Carousel({ items }: CarouselProps) {
         rotateZ: 0,
         zIndex: 2,
       },
-      // Next/Right card
       [(currentIndex + 1) % items.length]: {
         x: '0%',
         y: '15%',
@@ -75,7 +96,7 @@ export default function Carousel({ items }: CarouselProps) {
   };
 
   return (
-    <div className="relative w-full h-[600px] perspective-[1500px] -mt-12">
+    <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] perspective-[1500px] -mt-6 sm:-mt-12">
       <div className="absolute inset-0 flex items-start justify-center">
         <div className="relative w-full max-w-7xl">
           {items.map((item, index) => (
@@ -87,7 +108,7 @@ export default function Carousel({ items }: CarouselProps) {
                 duration: 1,
                 ease: [0.43, 0.13, 0.23, 0.96],
               }}
-              className="absolute left-1/2 top-1/2 -translate-y-1/2 w-[450px] cursor-pointer"
+              className="absolute left-1/2 top-1/2 -translate-y-1/2 w-[280px] sm:w-[350px] md:w-[450px] cursor-pointer"
               onClick={() => setCurrentIndex(index)}
               style={{ 
                 transformOrigin: "center center",
@@ -99,34 +120,51 @@ export default function Carousel({ items }: CarouselProps) {
               }}
             >
               <div 
-                className={`w-full overflow-hidden rounded-3xl transition-colors shadow-xl backdrop-blur-sm ${item.color.bg}`}
+                className={`w-full overflow-hidden rounded-2xl sm:rounded-3xl transition-colors shadow-xl backdrop-blur-sm ${item.color.bg}`}
                 style={{
                   borderWidth: '1px',
                   borderColor: item.color.border,
                 }}
               >
-                <div className="p-6">
-                  <div className="relative h-52 w-full rounded-2xl overflow-hidden">
+                <div className="p-4 sm:p-6">
+                  <div className="relative h-36 sm:h-44 md:h-52 w-full rounded-xl sm:rounded-2xl overflow-hidden">
                     <Image
                       src={item.image}
                       alt={item.name}
                       fill
                       className="object-cover hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 450px) 100vw, 450px"
+                      sizes="(max-width: 640px) 280px, (max-width: 768px) 350px, 450px"
                     />
                   </div>
                 </div>
-                <div className="px-8 pb-8">
-                  <div className={`w-16 h-16 rounded-xl flex items-center justify-center mb-6 ${item.color.text}`}>
+                <div className="px-4 sm:px-6 md:px-8 pb-6 sm:pb-8">
+                  <div className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl flex items-center justify-center mb-4 sm:mb-6 ${item.color.text}`}>
                     {item.icon}
                   </div>
-                  <h3 className={`text-2xl font-semibold mb-4 ${item.color.text}`}>{item.name}</h3>
-                  <p className={`text-lg leading-relaxed opacity-80 ${item.color.text}`}>{item.description}</p>
+                  <h3 className={`text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-4 ${item.color.text}`}>
+                    {item.name}
+                  </h3>
+                  <p className={`text-sm sm:text-base md:text-lg leading-relaxed opacity-80 ${item.color.text}`}>
+                    {item.description}
+                  </p>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
+      </div>
+
+      {/* Mobile Navigation Dots */}
+      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 sm:hidden">
+        {items.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-2 h-2 rounded-full transition-colors ${
+              index === currentIndex ? 'bg-foreground' : 'bg-foreground/30'
+            }`}
+          />
+        ))}
       </div>
     </div>
   );

@@ -17,6 +17,7 @@ const images = [
 export default function ParallaxSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const bgVideoRef = useRef<HTMLVideoElement>(null);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   
   const { scrollYProgress } = useScroll({
@@ -55,9 +56,24 @@ export default function ParallaxSection() {
   );
 
   return (
-    <div ref={containerRef} className="relative h-[300vh] bg-black">
+    <div ref={containerRef} className="relative h-[300vh]">
       {/* Sticky Container */}
       <div className="sticky top-0 h-screen overflow-hidden">
+        {/* Background Video */}
+        <div className="absolute inset-0 bg-black">
+          <video
+            ref={bgVideoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover opacity-50"
+            src="/videos/showreel.mp4"
+          />
+          {/* Overlay gradient */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/50" />
+        </div>
+
         {/* Center Text and Play Button */}
         <motion.div 
           className="absolute inset-0 flex items-center justify-center z-20"

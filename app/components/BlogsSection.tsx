@@ -7,7 +7,7 @@ const blogs = [
   {
     title: "The Future of AI Avatars in Digital Marketing",
     excerpt: "Discover how AI-powered avatars are revolutionizing brand communication and customer engagement in the digital space.",
-    image: "/images/blogs/ai-marketing.jpg",
+    image: "/images/blogs/marketing.jpg",
     category: "AI Technology",
     readTime: "5 min read",
     date: "Oct 15, 2023"
@@ -15,7 +15,7 @@ const blogs = [
   {
     title: "Creating Authentic Brand Personas with AI",
     excerpt: "Learn how businesses are leveraging AI avatars to build more authentic and relatable brand personalities.",
-    image: "/images/blogs/brand-persona.jpg",
+    image: "/images/blogs/ai-avatar.webp",
     category: "Branding",
     readTime: "4 min read",
     date: "Oct 12, 2023"
@@ -23,7 +23,7 @@ const blogs = [
   {
     title: "Best Practices for AI Avatar Integration",
     excerpt: "Expert tips on seamlessly integrating AI avatars into your existing digital marketing strategy.",
-    image: "/images/blogs/integration.jpg",
+    image: "/images/blogs/package-design.jpg",
     category: "Best Practices",
     readTime: "6 min read",
     date: "Oct 8, 2023"

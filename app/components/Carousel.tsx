@@ -53,16 +53,25 @@ export default function Carousel({ items }: CarouselProps) {
           };
     }
 
-    // Desktop styles (3 cards view)
+    // Desktop styles (4 cards view)
     const positions = {
+      [((currentIndex - 2) + items.length) % items.length]: {
+        x: '-150%',
+        y: '10%',
+        scale: 0.85,
+        opacity: 0.7,
+        rotateY: 10,
+        rotateZ: -12,
+        zIndex: 0,
+      },
       [((currentIndex - 1) + items.length) % items.length]: {
         x: '-100%',
         y: '5%',
-        scale: 0.95,
-        opacity: 1,
+        scale: 0.9,
+        opacity: 0.8,
         rotateY: 5,
         rotateZ: -8,
-        zIndex: 0,
+        zIndex: 1,
       },
       [currentIndex]: {
         x: '-50%',
@@ -71,23 +80,32 @@ export default function Carousel({ items }: CarouselProps) {
         opacity: 1,
         rotateY: 0,
         rotateZ: 0,
-        zIndex: 2,
+        zIndex: 3,
       },
       [(currentIndex + 1) % items.length]: {
         x: '0%',
-        y: '15%',
-        scale: 0.95,
-        opacity: 1,
+        y: '5%',
+        scale: 0.9,
+        opacity: 0.8,
         rotateY: -5,
         rotateZ: 8,
+        zIndex: 1,
+      },
+      [(currentIndex + 2) % items.length]: {
+        x: '50%',
+        y: '10%',
+        scale: 0.85,
+        opacity: 0.7,
+        rotateY: -10,
+        rotateZ: 12,
         zIndex: 0,
       },
     };
 
     return positions[index] || {
-      x: '-50%',
-      y: '20%',
-      scale: 0.9,
+      x: '100%',
+      y: '10%',
+      scale: 0.8,
       opacity: 0,
       rotateY: 0,
       rotateZ: 0,
@@ -98,7 +116,7 @@ export default function Carousel({ items }: CarouselProps) {
   return (
     <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] perspective-[1500px] -mt-6 sm:-mt-12">
       <div className="absolute inset-0 flex items-start justify-center">
-        <div className="relative w-full max-w-7xl">
+        <div className="relative w-full max-w-[90rem]">
           {items.map((item, index) => (
             <motion.div
               key={index}
@@ -108,7 +126,7 @@ export default function Carousel({ items }: CarouselProps) {
                 duration: 1,
                 ease: [0.43, 0.13, 0.23, 0.96],
               }}
-              className="absolute left-1/2 top-1/2 -translate-y-1/2 w-[280px] sm:w-[350px] md:w-[450px] cursor-pointer"
+              className="absolute left-1/2 top-1/2 -translate-y-1/2 w-[280px] sm:w-[320px] md:w-[380px] cursor-pointer"
               onClick={() => setCurrentIndex(index)}
               style={{ 
                 transformOrigin: "center center",
@@ -122,8 +140,9 @@ export default function Carousel({ items }: CarouselProps) {
               <div 
                 className={`w-full overflow-hidden rounded-2xl sm:rounded-3xl transition-colors shadow-xl backdrop-blur-sm ${item.color.bg}`}
                 style={{
-                  borderWidth: '1px',
+                  borderWidth: '2px',
                   borderColor: item.color.border,
+                  boxShadow: `0 8px 32px ${item.color.border}25`,
                 }}
               >
                 <div className="p-4 sm:p-6">

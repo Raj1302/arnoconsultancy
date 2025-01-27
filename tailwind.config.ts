@@ -12,19 +12,23 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: {
-          DEFAULT: "#5C45FD",
-          light: "#A89BFF",
+          DEFAULT: "var(--primary)",
+          hover: "var(--primary-hover)",
         },
-        secondary: "#161616",
-        accent: "#969799",
-        offwhite: "#F5F5F5",
+        secondary: {
+          DEFAULT: "var(--secondary)",
+          hover: "var(--secondary-hover)",
+        },
+        accent: {
+          DEFAULT: "var(--accent)",
+          hover: "var(--accent-hover)",
+        },
       },
-      fontFamily: {
-        'times': ['Times New Roman', 'serif'],
-        'jakarta': ['var(--font-jakarta)', 'sans-serif'],
+      animation: {
+        'spin-slow': 'spin 3s linear infinite',
       },
-      screens: {
-        'xs': '475px',
+      perspective: {
+        '1000px': '1000px',
       },
     },
   },

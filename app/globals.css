@@ -3,37 +3,35 @@
 @tailwind utilities;
 
 :root {
-  --background: theme(colors.white);
-  --foreground: theme(colors.gray.900);
-  --primary: #5C45FD;
-  --secondary: #161616;
-  --accent: #969799;
-  --light-primary: #A89BFF;
-  --off-white: #F5F5F5;
+  --background: #faf9f6; /* Off-white */
+  --foreground: #1a1a1a; /* Almost black for better contrast */
+  --primary: #7c3aed; /* Vibrant purple */
+  --primary-hover: #6d28d9; /* Darker purple */
+  --secondary: #2563eb; /* Rich blue */
+  --secondary-hover: #1d4ed8; /* Darker blue */
+  --accent: #f59e0b; /* Warm amber */
+  --accent-hover: #d97706; /* Darker amber */
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-jakarta), sans-serif;
+  font-family: var(--font-ubuntu);
 }
 
-@layer components {
-  .service-card {
-    @apply p-6 rounded-2xl border border-gray-200 
-           hover:border-[#A89BFF]
-           transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
   }
-  
-  .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#5C45FD] to-[#A89BFF];
+  100% {
+    transform: translateX(calc(-50% - 1rem));
   }
+}
 
-  .logo-text {
-    @apply font-times;
-  }
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
 
-  .heading-text {
-    @apply font-times;
-  }
+.animate-scroll:hover {
+  animation-play-state: paused;
 }

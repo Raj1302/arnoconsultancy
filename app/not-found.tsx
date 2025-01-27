@@ -1,50 +1,82 @@
+"use client";
+
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
+    <main className="min-h-screen flex items-center justify-center p-4">
       <div className="max-w-2xl mx-auto text-center">
-        {/* 404 Heading */}
-        <h1 className="text-9xl font-times text-violet-600 mb-4">404</h1>
-        
-        {/* Message */}
-        <h2 className="text-3xl sm:text-4xl font-times mb-4">
-          Page <span className="italic">Not Found</span>
-        </h2>
-        <p className="text-gray-600 text-lg mb-8">
-          The page you are looking for might have been removed, had its name changed, 
-          or is temporarily unavailable.
-        </p>
-
-        {/* Back to Home Button */}
-        <Link 
-          href="/"
-          className="inline-flex items-center justify-center bg-violet-600 text-white 
-                     px-8 py-4 rounded-full font-medium transition-all duration-300
-                     hover:bg-violet-700 hover:scale-105 hover:shadow-lg
-                     active:scale-95"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
         >
-          Back to Home
-          <svg 
-            className="w-5 h-5 ml-2" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
-          >
-            <path 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth={2} 
-              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" 
-            />
-          </svg>
-        </Link>
+          {/* 404 Number */}
+          <div className="relative">
+            <h1 className="text-[150px] md:text-[200px] font-bold text-primary/10 leading-tight">
+              404
+            </h1>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-24 h-24 md:w-32 md:h-32 bg-primary/5 rounded-full blur-2xl" />
+            </div>
+          </div>
 
-        {/* Optional: Decorative Element */}
-        <div className="absolute inset-0 -z-10 opacity-5">
-          <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]" />
-        </div>
+          {/* Content */}
+          <div className="relative -mt-8 md:-mt-16">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              Page Not Found
+            </h2>
+            <p className="text-foreground/70 mb-8 max-w-md mx-auto">
+              The page you're looking for doesn't exist or has been moved. 
+              Let's get you back on track.
+            </p>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href="/"
+                className="px-8 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-colors"
+              >
+                Back to Home
+              </Link>
+              <Link 
+                href="/contact"
+                className="px-8 py-3 rounded-full border border-primary/30 hover:bg-primary/5 font-medium transition-colors"
+              >
+                Contact Support
+              </Link>
+            </div>
+          </div>
+
+          {/* Helpful Links */}
+          <div className="mt-12 pt-12 border-t border-primary/10">
+            <h3 className="text-lg font-semibold mb-4">
+              You might be interested in:
+            </h3>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link 
+                href="/services"
+                className="px-6 py-2 rounded-full bg-primary/5 hover:bg-primary/10 transition-colors"
+              >
+                Our Services
+              </Link>
+              <Link 
+                href="/portfolio"
+                className="px-6 py-2 rounded-full bg-primary/5 hover:bg-primary/10 transition-colors"
+              >
+                Portfolio
+              </Link>
+              <Link 
+                href="/blog"
+                className="px-6 py-2 rounded-full bg-primary/5 hover:bg-primary/10 transition-colors"
+              >
+                Blog
+              </Link>
+            </div>
+          </div>
+        </motion.div>
       </div>
-    </div>
+    </main>
   );
 } 
